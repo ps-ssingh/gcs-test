@@ -26,4 +26,4 @@ jobs:
           destination_file: gs://saas-pssingh/check.py
           application_credentials: ${{ secrets.GCP_AUTH }}
           project_id: ps-ssingh-gcp
-          command:  cp
+          command: cp
