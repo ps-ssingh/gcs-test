@@ -19,6 +19,6 @@ jobs:
         uses: ps-ssingh/gcs-action@v0.2
         with:
           source_file: boston-housing-training.csv
-          destination_file: gs://saas-pssingh/boston-housing-training.csv
+          destination_file: gs://saas-pssingh/
           application_credentials: ${{ secrets.GCP_AUTH }}
           project_id: ps-ssingh-gcp
