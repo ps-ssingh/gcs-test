@@ -20,7 +20,7 @@ jobs:
           echo "hello world"
           
       - name: Copy files to gcs
-        uses: ps-ssingh/gcs-action@v0.5
+        uses: ps-ssingh/gcs-action@v0.6
         with:
           source_file: check.py
           destination_file: gs://saas-pssingh/check.py
