@@ -1,0 +1,24 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: My workflow
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  build:
+    steps:
+      - name: Say hello
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "hello world"
+      - name: Copy files to gcs
+        uses: ps-ssingh/gcs-action@v0.1
+        with:
+          source_file: boston-housing-training.csv
+          destination_file: gs://saas-pssingh/boston-housing-training.csv
+          application_credentials: ${{ secrets.GCP_AUTH }}
+          project_id: ps-ssingh-gcp
