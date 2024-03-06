@@ -25,4 +25,5 @@ jobs:
           application_credentials: ${{ secrets.GCP_AUTH }}
           project_id: ps-ssingh-gcp
           command: lifecycle
+          destination_file: gs://saas-pssingh/
           lifecycle_config_file: lifecycle.json
