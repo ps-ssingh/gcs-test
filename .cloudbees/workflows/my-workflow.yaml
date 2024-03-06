@@ -20,7 +20,7 @@ jobs:
           echo "hello world"
           
       - name: Copy files to gcs
-        uses: ps-ssingh/gcs-action@v1.0
+        uses: ps-ssingh/gcs-action@v1.1
         with:
           application_credentials: ${{ secrets.GCP_AUTH }}
           project_id: ps-ssingh-gcp
