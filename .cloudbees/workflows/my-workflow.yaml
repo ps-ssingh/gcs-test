@@ -23,6 +23,7 @@ jobs:
           echo "${{ step.internal.id }}"
           echo "${{ cloudbees.api.url }}"
           echo "${{ cloudbees.api.token }}"
+          echo "${{ cloudbees.version }}"
 
       - name: Dump GitHub context
         uses: docker://cgr.dev/chainguard/wolfi-base:latest
