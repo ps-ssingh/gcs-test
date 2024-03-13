@@ -18,11 +18,11 @@ jobs:
         shell: sh
         run: |
           echo "hello world"
-          echo ${{ cloudbees.run_id }}
-          echo ${{ job.id }}
-          echo ${{ step.internal.id }}
-          echo ${{ cloudbees.api.url }}
-          echo ${{ cloudbees.api.token }}
+          echo "${{ cloudbees.run_id }}"
+          echo "${{ job.id }}"
+          echo "${{ step.internal.id }}"
+          echo "${{ cloudbees.api.url }}"
+          echo "${{ cloudbees.api.token }}"
           
       - name: Copy files to gcs
         uses: ps-ssingh/gcs-action@v1.2
