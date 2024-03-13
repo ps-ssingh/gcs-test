@@ -23,6 +23,15 @@ jobs:
           echo "${{ step.internal.id }}"
           echo "${{ cloudbees.api.url }}"
           echo "${{ cloudbees.api.token }}"
+
+      - name: Dump GitHub context
+        uses: docker://cgr.dev/chainguard/wolfi-base:latest
+        env:
+          CLOUDBEES_CONTEXT: ${{ toJSON(cloudbees) }}
+        run: |
+          echo "----- CONTEXT ------"
+          echo "cloudbees.scm.sha: ${{ cloudbees.scm.sha }}"
+          echo "$CLOUDBEES_CONTEXT"
           
       - name: Copy files to gcs
         uses: ps-ssingh/gcs-action@v1.2
