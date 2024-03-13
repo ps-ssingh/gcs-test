@@ -35,6 +35,15 @@ jobs:
           echo "----- CONTEXT ------"
           echo "cloudbees.scm.sha: ${{ cloudbees.scm.sha }}"
           echo "$CLOUDBEES_CONTEXT"
+
+      - name: Run Python
+        uses: docker://dvcorg/cml-py3:latest
+        env:
+          CLOUDBEES_OUTPUTS: ${{ cloudbees.workspace }}/outputs
+        run: |
+           pip install --no-cache-dir --upgrade awscli pandas boto3 sagemaker requests fsspec s3fs tabulate
+           python check.py
+        
           
       - name: Copy files to gcs
         uses: ps-ssingh/gcs-action@v1.2
