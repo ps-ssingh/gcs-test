@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    if: cloudbees.event.commits.modified == '*.yaml'
+    if: cloudbees.modified == '*.yaml'
     steps:
       - name: Checkout
         uses: cloudbees-io/checkout@v1
