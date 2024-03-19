@@ -72,7 +72,7 @@ jobs:
             echo "${{ cloudbees.api.url }}"
             echo "${{ cloudbees.api.token }}"
             echo "${{ cloudbees.version }}"
-            echo "${{ cloudbees.event.after }"
+            echo "${{ cloudbees.event.after }}"
 
         - name: Dump GitHub context
           uses: docker://cgr.dev/chainguard/wolfi-base:latest
