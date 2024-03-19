@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    if: cloudbees.event.head_commit.modified == '[*.yaml]'
+    if: cloudbees.event.head_commit.modified == '[random/*.txt]'
     steps:
       - name: Checkout
         uses: cloudbees-io/checkout@v1
@@ -55,10 +55,11 @@ jobs:
           destination_file: gs://saas-pssingh/
           lifecycle_config_file: lifecycle.json
 
-job-second:
-  build-second:
-    if: cloudbees.event.head_commit.modified == '[*.py]'
-    steps:
+
+  job-second:
+    build-second:
+      if: cloudbees.event.head_commit.modified == '[pythonFiles/*.py]'
+      steps:
       - name: Checkout
         uses: cloudbees-io/checkout@v1
       
