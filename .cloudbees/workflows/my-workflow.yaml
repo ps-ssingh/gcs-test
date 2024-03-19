@@ -61,6 +61,7 @@ jobs:
 
 
   job-second:
+      if: cloudbees.event.head_commit.modified[0] == 'random/new.txt'
       needs: checkout
       steps:
         - name: Checkout
