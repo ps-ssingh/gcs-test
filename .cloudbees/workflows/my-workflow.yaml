@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    if: cloudbees.event.head_commit.modified == '.cloudbees/workflows/my-workflow.yaml'
+    if: cloudbees.event.head_commit.modified == ['.cloudbees/workflows/my-workflow.yaml']
     steps:
       - name: Checkout
         uses: cloudbees-io/checkout@v1
