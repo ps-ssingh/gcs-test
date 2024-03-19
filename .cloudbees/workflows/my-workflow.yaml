@@ -15,7 +15,7 @@ jobs:
   
   build:
     needs: checkout
-    if: cloudbees.event.head_commit.modified[0] == 'pythonFiles/newFile.py'
+    if: cloudbees.event.head_commit.modified[0].endsWith('.py')
     steps:  
       - name: Say hello
         uses: docker://golang:1.20.3-alpine3.17
