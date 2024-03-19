@@ -8,12 +8,15 @@ on:
       - '**'
 
 jobs:
-  build:
-    if: cloudbees.event.head_commit.modified.endsWith('.yaml')
+  checkout:
     steps:
       - name: Checkout
         uses: cloudbees-io/checkout@v1
-      
+  
+  build:
+    needs: checkout
+    if: cloudbees.event.head_commit.modified = [".cloudbees/workflows/my-workflow.yaml"]
+    steps:  
       - name: Say hello
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
@@ -57,6 +60,7 @@ jobs:
 
 
   job-second:
+      needs: checkout
       steps:
         - name: Checkout
           uses: cloudbees-io/checkout@v1
