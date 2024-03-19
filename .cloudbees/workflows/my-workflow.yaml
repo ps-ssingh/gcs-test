@@ -15,7 +15,7 @@ jobs:
   
   build:
     needs: checkout
-    if: cloudbees.event.head_commit.modified == [".cloudbees/workflows/my-workflow.yaml"]
+    if: cloudbees.event.head_commit.modified == '.cloudbees/workflows/my-workflow.yaml'
     steps:  
       - name: Say hello
         uses: docker://golang:1.20.3-alpine3.17
