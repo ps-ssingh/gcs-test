@@ -9,7 +9,7 @@ def create_or_append_to_file(file_path, content):
             file.write(content + '\n')
         print(f"Content appended to {file_path} successfully.")
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"error: {e}")
 
 def main():
     """Main function."""
