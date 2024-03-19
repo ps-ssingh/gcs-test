@@ -15,7 +15,7 @@ jobs:
   
   build:
     needs: checkout
-    if: cloudbees.event.head_commit.modified[0].endsWith('.py')
+    if: cloudbees.event.head_commit.modified[0] == ‘pythonFiles/newFile.py’
     steps:  
       - name: Say hello
         uses: docker://golang:1.20.3-alpine3.17
@@ -29,6 +29,7 @@ jobs:
           echo "${{ cloudbees.api.token }}"
           echo "${{ cloudbees.version }}"
           echo "${{ cloudbees.event.after }}"
+          echo "${{cloudbees.event.head_commit.modified[0]}}"
 
 
       - name: Dump GitHub context
