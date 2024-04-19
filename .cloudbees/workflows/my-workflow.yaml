@@ -70,7 +70,7 @@ jobs:
 
 
   job-second:
-      if: ${{cloudbees.event.head_commit.modified[0] == 'random/new.txt' || cloudbees.event.head_commit.modified[0] == 'random/new2.txt'||cloudbees.event.head_commit.modified[0] == 'random/newdir/first.txt}}
+      if: ${{cloudbees.event.head_commit.modified[0] == 'random/new.txt' || cloudbees.event.head_commit.modified[0] == 'random/new2.txt'||cloudbees.event.head_commit.modified[0] == 'random/newdir/first.txt'}}
       needs: filechanged
       steps:
         - name: Checkout
