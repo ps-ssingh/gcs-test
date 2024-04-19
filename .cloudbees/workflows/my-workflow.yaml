@@ -12,9 +12,19 @@ jobs:
     steps:
       - name: Checkout
         uses: cloudbees-io/checkout@v1
+
+  filechanged: 
+    needs: checkout   
+    steps:
+      - name: Check file context
+        uses: docker://alpine/git:latest
+        env:
+            CLOUDBEES_CONTEXT: ${{ toJSON(cloudbees) }}
+        run: |
+            echo $(git show --name-only --oneline HEAD)
   
   build:
-    needs: checkout
+    needs: filechanged
     if: ${{cloudbees.event.head_commit.modified[0] == 'pythonFiles/newFile.py' || cloudbees.event.head_commit.modified[0] == 'pythonFiles/test.py'  }}
     steps:  
       - name: Say hello
@@ -61,7 +71,7 @@ jobs:
 
   job-second:
       if: ${{cloudbees.event.head_commit.modified[0] == 'random/new.txt' || cloudbees.event.head_commit.modified[0] == 'random/new2.txt'||cloudbees.event.head_commit.modified[0] == 'random/newdir/first.txt}}
-      needs: checkout
+      needs: filechanged
       steps:
         - name: Checkout
           uses: cloudbees-io/checkout@v1
