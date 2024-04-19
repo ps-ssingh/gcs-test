@@ -18,7 +18,7 @@ jobs:
         env:
             CLOUDBEES_CONTEXT: ${{ toJSON(cloudbees) }}
         run: |
-          echo $(git show --name-only --oneline HEAD |grep -E '(dir2|newdir)/')
+          echo $(git diff-tree --no-commit-id --name-only -r HEAD | grep -E '(dir2|newdir)/')
   
   build:
     needs: checkout
