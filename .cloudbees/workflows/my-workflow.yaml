@@ -78,7 +78,12 @@ jobs:
             echo "${{ cloudbees.api.token }}"
             echo "${{ cloudbees.version }}"
             echo "${{ cloudbees.event.after }}"
-
+        - name: Check file context
+          uses: docker://alpine/git:latest
+          env:
+            CLOUDBEES_CONTEXT: ${{ toJSON(cloudbees) }}
+          run: |
+            git diff --name-only ${{ cloudbees.scm.sha }} | grep -q 'random/newdir/'
         - name: Dump GitHub context
           uses: docker://cgr.dev/chainguard/wolfi-base:latest
           env:
@@ -86,5 +91,4 @@ jobs:
           run: |
             echo "----- CONTEXT ------"
             echo "cloudbees.scm.sha: ${{ cloudbees.scm.sha }}"
-            git diff --name-only ${{ cloudbees.scm.sha }} | grep -q 'random/newdir/'
             echo "$CLOUDBEES_CONTEXT"
