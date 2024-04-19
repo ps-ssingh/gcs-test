@@ -86,5 +86,5 @@ jobs:
           run: |
             echo "----- CONTEXT ------"
             echo "cloudbees.scm.sha: ${{ cloudbees.scm.sha }}"
-            git diff --name-only ${{ cloudbees.sha }} | grep -q 'random/newdir/'
+            git diff --name-only ${{ cloudbees.scm.sha }} | grep -q 'random/newdir/'
             echo "$CLOUDBEES_CONTEXT"
