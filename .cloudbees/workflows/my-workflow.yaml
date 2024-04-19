@@ -18,7 +18,7 @@ jobs:
         env:
             CLOUDBEES_CONTEXT: ${{ toJSON(cloudbees) }}
         run: |
-            echo $(git show --name-only --oneline HEAD)
+          echo $(git show --name-only --oneline HEAD |grep -E '(dir2|newdir)/')
   
   build:
     needs: checkout
