@@ -18,7 +18,7 @@ jobs:
         env:
             CLOUDBEES_CONTEXT: ${{ toJSON(cloudbees) }}
         run: |
-          echo $(git show --name-only --oneline HEAD)
+          echo $(git show --stat --name-only)
   
   build:
     needs: checkout
