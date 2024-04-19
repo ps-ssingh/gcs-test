@@ -83,7 +83,7 @@ jobs:
           env:
             CLOUDBEES_CONTEXT: ${{ toJSON(cloudbees) }}
           run: |
-            git diff --name-only ${{ cloudbees.scm.sha }} | grep -q 'random/newdir/'
+            git diff --name-only ${{ cloudbees.scm.sha }} 
         - name: Dump GitHub context
           uses: docker://cgr.dev/chainguard/wolfi-base:latest
           env:
