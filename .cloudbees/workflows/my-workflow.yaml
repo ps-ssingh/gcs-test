@@ -60,7 +60,7 @@ jobs:
 
 
   job-second:
-      if: ${{cloudbees.event.head_commit.modified[0] == 'random/new.txt' || cloudbees.event.head_commit.modified[0] == 'random/new2.txt'||cloudbees.event.head_commit.modified[0] == 'random/newdir/*.txt}}
+      if: ${{cloudbees.event.head_commit.modified[0] == 'random/new.txt' || cloudbees.event.head_commit.modified[0] == 'random/new2.txt'||cloudbees.event.head_commit.modified[0] == 'random/newdir/first.txt}}
       needs: checkout
       steps:
         - name: Checkout
@@ -83,7 +83,7 @@ jobs:
           env:
             CLOUDBEES_CONTEXT: ${{ toJSON(cloudbees) }}
           run: |
-            git diff --name-only ${{ cloudbees.scm.sha }} 
+            echo $(git show --name-only --oneline HEAD)
         - name: Dump GitHub context
           uses: docker://cgr.dev/chainguard/wolfi-base:latest
           env:
