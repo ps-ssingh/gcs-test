@@ -19,6 +19,7 @@ jobs:
             CLOUDBEES_CONTEXT: ${{ toJSON(cloudbees) }}
         run: |
           echo $(git log --name-only)
+          echo "$CLOUDBEES_CONTEXT"
           
   
   build:
