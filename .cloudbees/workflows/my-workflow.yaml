@@ -39,7 +39,6 @@ jobs:
           echo "${{ cloudbees.event.after }}"
           echo "${{cloudbees.event.head_commit.modified[0]}}"
 
-
       - name: Dump GitHub context
         uses: docker://cgr.dev/chainguard/wolfi-base:latest
         env:
